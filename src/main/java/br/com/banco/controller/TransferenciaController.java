@@ -56,7 +56,7 @@ public class TransferenciaController implements ITransferenciaController {
      * @return lista de transações que foram realizadas entre de dataInicio e dataFim
      * */
     @CrossOrigin(origins = "http://localhost:3000") // CrossOrigin da aplicação
-    @GetMapping(value = "/search==init{dataInicio}&dataFim{dataFim}")
+    @GetMapping(value = "/search==dataInicio{dataInicio}&dataFim{dataFim}")
     @Override
     public List<Transferencia> buscar(@PathVariable(value = "dataInicio") String dataInicio,
                                       @PathVariable(value = "dataFim") String dataFim) {
@@ -72,7 +72,7 @@ public class TransferenciaController implements ITransferenciaController {
      * @return lista de transações que foram realizadas entre de dataInicio e dataFim
      * */
     @CrossOrigin(origins = "http://localhost:3000") // CrossOrigin da aplicação
-    @GetMapping(value = "/search=={operador}&init{dataInicio}&dataFim{dataFim}")
+    @GetMapping(value = "/search=={operador}&dataInicio{dataInicio}&dataFim{dataFim}")
     @Override
     public List<Transferencia> buscar(@PathVariable(value = "operador") String operador,
                                       @PathVariable(value = "dataInicio") String dataInicio,

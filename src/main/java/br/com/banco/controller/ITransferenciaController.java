@@ -10,6 +10,6 @@ public interface ITransferenciaController {
     List<Transferencia> listar();
     List<Transferencia> buscar(Integer conta);
     List<Transferencia> buscar(String operador);
-    List<Transferencia> buscar(String inicio, String fim);
-    List<Transferencia> buscar(String operador,String inicio,String fim);
+    List<Transferencia> buscar(String dataInicio, String dataFim);
+    List<Transferencia> buscar(String operador,String dataInicio,String dataFim);
 }
