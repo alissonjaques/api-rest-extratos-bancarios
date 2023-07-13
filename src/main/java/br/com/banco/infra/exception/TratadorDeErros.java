@@ -1,5 +1,6 @@
 package br.com.banco.infra.exception;
 
+import br.com.banco.application.DTOs.exceptions.ExceptionDTO;
 import br.com.banco.domain.exceptions.ValidacaoException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class TratadorDeErros {
 
     @ExceptionHandler(ValidacaoException.class)
     public ResponseEntity tratarErroRegraDeNegocio(ValidacaoException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
+        return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(), ex.getStatus()));
     }
 
     private record DadosErroValidacao(String campo, String mensagem) {
