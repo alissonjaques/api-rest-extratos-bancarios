@@ -35,15 +35,10 @@
 - No frontend o usuário deve ser capaz de informar um período de tem e/ou nome do operador da transasção como filtros para buscar as transações.
 - As transações devem ser exibidas junto com o saldo total e o saldo total no período de acordo com o protótipo do documento.
 
-## O que iremos avaliar
+## Obrigatório
 - Cumprimento dos requisitos
 - Qualidade do projeto de API e fluidez da DX
 - Organização do código e boas práticas
 - Domínio das linguagens, bibliotecas e ferramentas utilizadas
 - Organização dos commits
 - Escrita e cobertura de testes
-
-## Sobre a entrega
-- Utilizar o padrão RESTFul para a construção da sua API.
-- Existe um script sql no pacote resources que cotém a modelagem do banco que pode ser seguida, e valores iniciais.
-- Caso julge necessário você poderá criar mais tablas, porém a estrutura inicial não deve ser alterada.
