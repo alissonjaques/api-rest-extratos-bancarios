@@ -5,6 +5,7 @@ import br.com.banco.application.DTOs.conta.UpdateContaDTO;
 import br.com.banco.domain.interfaces.ContaRepository;
 import br.com.banco.domain.model.Conta;
 import br.com.banco.domain.validations.conta.create.IValidacaoCriarConta;
+import br.com.banco.domain.validations.conta.delete.IValidacaoDeletarConta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class ContaService {
     private ContaRepository contaRepository;
     @Autowired
     List<IValidacaoCriarConta> validacoesCriarConta;
+    @Autowired
+    List<IValidacaoDeletarConta> validacoesDeletarConta;
 
     public Conta cadastrar(CreateContaDTO createContaDTO){
         validacoesCriarConta.forEach(v -> v.validar(createContaDTO));
@@ -32,6 +35,7 @@ public class ContaService {
     }
 
     public void excluir(Long idConta) {
+        validacoesDeletarConta.forEach(v -> v.validar(idConta));
         var conta = contaRepository.getReferenceById(idConta);
         contaRepository.delete(conta);
     }
