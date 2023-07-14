@@ -8,7 +8,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface TransferenciaRepository extends JpaRepository<Transferencia, Integer> {
+public interface TransferenciaRepository extends JpaRepository<Transferencia, Long> {
+    @Query("""
+            select t from Transferencia t
+            where t.idTransferencia = :idTransferencia
+           """)
+    Transferencia findByIdTransferencia(Long idTransferencia);
     /*
     List<Transferencia> findByConta(Long conta);
     List<Transferencia> findByOperador(String operador);

@@ -27,6 +27,8 @@ public class Conta {
         this.nomeResponsavel = dados.nomeResponsavel();
     }
 
+    public Conta(Long idConta){ this.idConta = idConta; }
+
     public void atualizarInformacoes(UpdateContaDTO dados) {
         if (dados.nomeResponsavel() != null) {
             this.nomeResponsavel = dados.nomeResponsavel();
