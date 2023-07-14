@@ -5,11 +5,13 @@ import br.com.banco.domain.exceptions.ValidacaoException;
 import org.springframework.stereotype.Component;
 
 @Component()
-public class ValidarCamposObrigatoriosConta implements IValidacaoCriarConta {
+public class ValidarCapacidadeMaximaNomeResponsavelCriarConta implements IValidacaoCriarConta{
     public void validar(CreateContaDTO createContaDTO){
-        if(createContaDTO.nomeResponsavel() == null || createContaDTO.nomeResponsavel().isBlank()){
+        if(createContaDTO.nomeResponsavel().length() > 50){
             throw new ValidacaoException("Não foi possível cadastrar a conta no banco de dados.<br>Motivo: o campo " +
-                    "nomeResponsável é obrigatório",400);
+                    "nomeResponsável deve possuir, no máximo, 50 caracteres. O campo nomeResponsavel = " +
+                    createContaDTO.nomeResponsavel() + " possui " + createContaDTO.nomeResponsavel().length() +
+                    " caracteres.",400);
         }
     }
 }
