@@ -1,6 +1,5 @@
 package br.com.banco.domain.validations.conta.update;
 
-import br.com.banco.application.DTOs.conta.CreateContaDTO;
 import br.com.banco.application.DTOs.conta.UpdateContaDTO;
 import br.com.banco.domain.exceptions.ValidacaoException;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,6 @@
 package br.com.banco.domain.model;
 
 import br.com.banco.domain.enums.Tipo;
-import br.com.banco.domain.model.Conta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
