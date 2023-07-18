@@ -9,7 +9,7 @@ public record GetTransferenciaDTO(
         Long idTransferencia,
         LocalDateTime dataTransferencia,
         Double valor,
-        Tipo tipo,
+        String tipo,
         String nomeOperadorTransacao,
         Long contaId
 ) {

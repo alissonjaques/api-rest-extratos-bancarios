@@ -17,6 +17,11 @@ public class ValidarCamposObrigatoriosCriarTransferencia implements IValidacaoCr
                     "valor é obrigatório",400);
         }
 
+        if(createTransferenciaDTO.tipo() == null){
+            throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
+                    "tipo é obrigatório",400);
+        }
+
         if(createTransferenciaDTO.nomeOperadorTransacao() == null || createTransferenciaDTO.nomeOperadorTransacao().isBlank() ){
             throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
                     "nomeOperadorTransacao é obrigatório",400);

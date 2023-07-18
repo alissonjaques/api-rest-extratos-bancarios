@@ -2,7 +2,6 @@ package br.com.banco.domain.model;
 
 import br.com.banco.application.DTOs.transferencia.CreateTransferenciaDTO;
 import br.com.banco.application.DTOs.transferencia.UpdateTransferenciaDTO;
-import br.com.banco.domain.enums.Tipo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,7 +28,7 @@ public class Transferencia {
 
     private Double valor;
 
-    private Tipo tipo;
+    private String tipo;
 
     @Column(name = "nome_operador_transacao")
     private String nomeOperadorTransacao;
@@ -41,7 +40,7 @@ public class Transferencia {
     public Transferencia(CreateTransferenciaDTO createTransferenciaDTO) {
         this.dataTransferencia = createTransferenciaDTO.dataTransferencia();
         this.valor = createTransferenciaDTO.valor();
-        this.tipo = createTransferenciaDTO.tipo();
+        this.tipo = createTransferenciaDTO.tipo().getDescricao();
         this.nomeOperadorTransacao = createTransferenciaDTO.nomeOperadorTransacao();
         this.conta = new Conta(createTransferenciaDTO.contaId());
     }
@@ -56,7 +55,7 @@ public class Transferencia {
         }
 
         if (updateTransferenciaDTO.tipo() != null) {
-            this.tipo = updateTransferenciaDTO.tipo();
+            this.tipo = updateTransferenciaDTO.tipo().getDescricao();
         }
 
         if (updateTransferenciaDTO.nomeOperadorTransacao() != null) {

@@ -4,6 +4,7 @@ import br.com.banco.application.DTOs.exceptions.ExceptionDTO;
 import br.com.banco.domain.exceptions.ValidacaoException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +26,11 @@ public class TratadorDeErros {
     @ExceptionHandler(ValidacaoException.class)
     public ResponseEntity tratarErroRegraDeNegocio(ValidacaoException ex) {
         return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(), ex.getStatus()));
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity tratarErroParser(HttpMessageNotReadableException ex) {
+        return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(),400));
     }
 
     private record DadosErroValidacao(String campo, String mensagem) {
