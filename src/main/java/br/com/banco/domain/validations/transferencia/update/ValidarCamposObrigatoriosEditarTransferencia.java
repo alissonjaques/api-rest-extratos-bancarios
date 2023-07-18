@@ -17,14 +17,14 @@ public class ValidarCamposObrigatoriosEditarTransferencia implements IValidacaoE
                     "dataTransferencia é obrigatório.",400);
         }
 
-        if(updateTransferenciaDTO.dataTransferencia() == null){
-            throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "dataTransferencia é obrigatório.",400);
-        }
-
         if(updateTransferenciaDTO.valor() == null){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
                     "valor é obrigatório.",400);
+        }
+
+        if(updateTransferenciaDTO.tipo() == null){
+            throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
+                    "tipo é obrigatório.",400);
         }
 
         if(updateTransferenciaDTO.nomeOperadorTransacao() == null || updateTransferenciaDTO.nomeOperadorTransacao().isBlank() ){
