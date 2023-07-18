@@ -9,27 +9,27 @@ public class ValidarCamposObrigatoriosCriarTransferencia implements IValidacaoCr
     public void validar(CreateTransferenciaDTO createTransferenciaDTO){
         if(createTransferenciaDTO.dataTransferencia() == null){
             throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "dataTransferencia é obrigatório",400);
+                    "dataTransferencia é obrigatório.",400);
         }
 
         if(createTransferenciaDTO.valor() == null){
             throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "valor é obrigatório",400);
+                    "valor é obrigatório.",400);
         }
 
         if(createTransferenciaDTO.tipo() == null){
             throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "tipo é obrigatório",400);
+                    "tipo é obrigatório.",400);
         }
 
         if(createTransferenciaDTO.nomeOperadorTransacao() == null || createTransferenciaDTO.nomeOperadorTransacao().isBlank() ){
             throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "nomeOperadorTransacao é obrigatório",400);
+                    "nomeOperadorTransacao é obrigatório.",400);
         }
 
         if(createTransferenciaDTO.contaId() == null){
             throw new ValidacaoException("Não foi possível cadastrar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "contaId é obrigatório",400);
+                    "contaId é obrigatório.",400);
         }
     }
 }

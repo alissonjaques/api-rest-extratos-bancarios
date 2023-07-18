@@ -9,32 +9,32 @@ public class ValidarCamposObrigatoriosEditarTransferencia implements IValidacaoE
     public void validar(UpdateTransferenciaDTO updateTransferenciaDTO){
         if(updateTransferenciaDTO.idTransferencia() == null){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "idTransferencia é obrigatório",400);
+                    "idTransferencia é obrigatório.",400);
         }
 
         if(updateTransferenciaDTO.dataTransferencia() == null){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "dataTransferencia é obrigatório",400);
+                    "dataTransferencia é obrigatório.",400);
         }
 
         if(updateTransferenciaDTO.dataTransferencia() == null){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "dataTransferencia é obrigatório",400);
+                    "dataTransferencia é obrigatório.",400);
         }
 
         if(updateTransferenciaDTO.valor() == null){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "valor é obrigatório",400);
+                    "valor é obrigatório.",400);
         }
 
         if(updateTransferenciaDTO.nomeOperadorTransacao() == null || updateTransferenciaDTO.nomeOperadorTransacao().isBlank() ){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "nomeOperadorTransacao é obrigatório",400);
+                    "nomeOperadorTransacao é obrigatório.",400);
         }
 
         if(updateTransferenciaDTO.contaId() == null){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: o campo " +
-                    "contaId é obrigatório",400);
+                    "contaId é obrigatório.",400);
         }
     }
 }

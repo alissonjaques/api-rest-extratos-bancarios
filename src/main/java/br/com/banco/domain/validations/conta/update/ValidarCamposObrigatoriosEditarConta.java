@@ -9,12 +9,12 @@ public class ValidarCamposObrigatoriosEditarConta implements IValidacaoEditarCon
     public void validar(UpdateContaDTO updateContaDTO){
         if(updateContaDTO.nomeResponsavel() == null || updateContaDTO.nomeResponsavel().isBlank()){
             throw new ValidacaoException("Não foi possível editar a conta no banco de dados.<br>Motivo: o campo " +
-                    "nomeResponsável é obrigatório",400);
+                    "nomeResponsável é obrigatório.",400);
         }
 
         if(updateContaDTO.idConta() == null){
             throw new ValidacaoException("Não foi possível editar a conta no banco de dados.<br>Motivo: o campo " +
-                    "idConta é obrigatório",400);
+                    "idConta é obrigatório.",400);
         }
     }
 }

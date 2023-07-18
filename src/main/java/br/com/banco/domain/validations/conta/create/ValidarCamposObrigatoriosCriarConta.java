@@ -9,7 +9,7 @@ public class ValidarCamposObrigatoriosCriarConta implements IValidacaoCriarConta
     public void validar(CreateContaDTO createContaDTO){
         if(createContaDTO.nomeResponsavel() == null || createContaDTO.nomeResponsavel().isBlank()){
             throw new ValidacaoException("Não foi possível cadastrar a conta no banco de dados.<br>Motivo: o campo " +
-                    "nomeResponsável é obrigatório",400);
+                    "nomeResponsável é obrigatório.",400);
         }
     }
 }

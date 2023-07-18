@@ -33,6 +33,13 @@ public class TratadorDeErros {
         return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(),400));
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity tratarErroGeral(Exception ex) {
+        System.out.println("Erro: " + ex.getMessage());
+        ex.printStackTrace();
+        return ResponseEntity.internalServerError().body(new ExceptionDTO("Erro interno no servidor.",500));
+    }
+
     private record DadosErroValidacao(String campo, String mensagem) {
         public DadosErroValidacao(FieldError erro){
             this(erro.getField(),erro.getDefaultMessage());

@@ -4,7 +4,9 @@ import br.com.banco.application.DTOs.transferencia.CreateTransferenciaDTO;
 import br.com.banco.domain.exceptions.ValidacaoException;
 import br.com.banco.domain.interfaces.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component()
 public class ValidarExisteConta implements IValidacaoCriarTransferencia {
     @Autowired
     ContaRepository contaRepository;
