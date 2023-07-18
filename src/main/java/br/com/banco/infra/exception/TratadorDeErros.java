@@ -30,14 +30,18 @@ public class TratadorDeErros {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity tratarErroParser(HttpMessageNotReadableException ex) {
-        return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(),400));
+        System.out.println("Erro: " + ex.getMessage());
+        ex.printStackTrace();
+        return ResponseEntity.badRequest().body(new ExceptionDTO("Não foi possível realizar a operação." +
+                "<br>Motivo: o formato do json pode estar inválido, ou algum dado passado no json é inválido.",400));
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity tratarErroGeral(Exception ex) {
         System.out.println("Erro: " + ex.getMessage());
         ex.printStackTrace();
-        return ResponseEntity.internalServerError().body(new ExceptionDTO("Erro interno no servidor.",500));
+        return ResponseEntity.internalServerError().body(new ExceptionDTO("Não foi possível realizar a operação." +
+                "<br>Motivo: erro interno no servidor.",500));
     }
 
     private record DadosErroValidacao(String campo, String mensagem) {
