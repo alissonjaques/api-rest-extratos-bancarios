@@ -8,13 +8,19 @@ import br.com.banco.domain.service.TransferenciaService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+
+import org.springframework.data.domain.Pageable;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("transferencias")
@@ -36,14 +42,102 @@ public class TransferenciaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<GetTransferenciaDTO>> listar(@PageableDefault(size = 10, page = 0, sort = {"idTransferencia"})
-                                                    Pageable paginacao){
+    public ResponseEntity<Page<GetTransferenciaDTO>> listar(@RequestParam(required = false) Date dataInicio,
+                                                            @RequestParam(required = false) Date dataFim,
+                                                            @RequestParam(required = false) String nomeOperadorTransacao,
+                                                            @PageableDefault(size = 10, page = 0, sort = {"idTransferencia"})
+                                                            Pageable paginacao) {
+        int start = paginacao.getPageNumber() * paginacao.getPageSize();
+
+        // Apenas data de ínicio na requisição
+        if (dataInicio != null && dataFim == null && nomeOperadorTransacao == null) {
+            var stream = transferenciaRepository.findByDataTransferencia(dataInicio).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Apenas data de fim na requisição
+        if (dataInicio == null && dataFim != null && nomeOperadorTransacao == null) {
+            var stream = transferenciaRepository.findByDataTransferencia(dataFim).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Apenas nome do operador da transação na requisição
+        if (dataInicio == null && dataFim == null && nomeOperadorTransacao != null) {
+            var stream = transferenciaRepository
+                    .findByNomeOperadorTransacao(nomeOperadorTransacao).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Data de início e data de fim na requisição, porém nome operador transação nulo
+        if(dataInicio != null && dataFim != null && nomeOperadorTransacao == null){
+            var stream = transferenciaRepository
+                    .findByDataFimAndDataInicio(dataInicio,dataFim).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Data de início e nome operador transação na requisição, porém data de fim nula
+        if(dataInicio != null && dataFim == null && nomeOperadorTransacao != null){
+            var stream = transferenciaRepository
+                    .findByNomeOperadorTransacaoAndData(nomeOperadorTransacao,dataInicio).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Data de fim e nome operador transação na requisição, porém data de início nula
+        if(dataInicio == null && dataFim != null && nomeOperadorTransacao != null){
+            var stream = transferenciaRepository
+                    .findByNomeOperadorTransacaoAndData(nomeOperadorTransacao,dataFim).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Todos os argumentos na requisição
+        if(dataInicio != null && dataFim != null && nomeOperadorTransacao != null){
+            var stream = transferenciaRepository
+                    .findByAllArguments(nomeOperadorTransacao,dataInicio,dataFim).stream()
+                    .map(GetTransferenciaDTO::new);
+            var tranferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
+            var page = new PageImpl<>(tranferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            return ResponseEntity.ok(page);
+        }
+
+        // Nenhum argumento na requisição
         var page = transferenciaRepository.findAll(paginacao).map(GetTransferenciaDTO::new);
         return ResponseEntity.ok(page);
     }
 
     @GetMapping("/{idTransferencia}")
-    public ResponseEntity listarPorId(@PathVariable Long idTransferencia){
+    public ResponseEntity listarPorId(@PathVariable Long idTransferencia) {
         var transferencia = transferenciaRepository.getReferenceById(idTransferencia);
         return ResponseEntity.ok(new GetTransferenciaDTO(transferencia));
     }
@@ -57,7 +151,7 @@ public class TransferenciaController {
 
     @DeleteMapping("/{idTransferencia}")
     @Transactional
-    public ResponseEntity excluir(@PathVariable Long idTransferencia){
+    public ResponseEntity excluir(@PathVariable Long idTransferencia) {
         var transferencia = transferenciaRepository.getReferenceById(idTransferencia);
         transferenciaService.excluir(idTransferencia);
         return ResponseEntity.noContent().build();
