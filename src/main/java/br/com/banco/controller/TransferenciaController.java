@@ -19,7 +19,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.data.domain.Pageable;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 @RestController
@@ -53,10 +52,10 @@ public class TransferenciaController {
         if (dataInicio != null && dataFim == null && nomeOperadorTransacao == null) {
             var stream = transferenciaRepository.findByDataTransferencia(dataInicio).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
@@ -64,10 +63,10 @@ public class TransferenciaController {
         if (dataInicio == null && dataFim != null && nomeOperadorTransacao == null) {
             var stream = transferenciaRepository.findByDataTransferencia(dataFim).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
@@ -76,10 +75,10 @@ public class TransferenciaController {
             var stream = transferenciaRepository
                     .findByNomeOperadorTransacao(nomeOperadorTransacao).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
@@ -88,10 +87,10 @@ public class TransferenciaController {
             var stream = transferenciaRepository
                     .findByDataFimAndDataInicio(dataInicio,dataFim).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
@@ -100,10 +99,10 @@ public class TransferenciaController {
             var stream = transferenciaRepository
                     .findByNomeOperadorTransacaoAndData(nomeOperadorTransacao,dataInicio).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
@@ -112,10 +111,10 @@ public class TransferenciaController {
             var stream = transferenciaRepository
                     .findByNomeOperadorTransacaoAndData(nomeOperadorTransacao,dataFim).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
@@ -124,10 +123,10 @@ public class TransferenciaController {
             var stream = transferenciaRepository
                     .findByAllArguments(nomeOperadorTransacao,dataInicio,dataFim).stream()
                     .map(GetTransferenciaDTO::new);
-            var tranferencias = stream.collect(Collectors.toList());
-            int end = Math.min((start + paginacao.getPageSize()), tranferencias.size());
-            var page = new PageImpl<>(tranferencias.subList(start, end),
-                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), tranferencias.size());
+            var transferencias = stream.collect(Collectors.toList());
+            int end = Math.min((start + paginacao.getPageSize()), transferencias.size());
+            var page = new PageImpl<>(transferencias.subList(start, end),
+                    PageRequest.of(paginacao.getPageNumber(), paginacao.getPageSize()), transferencias.size());
             return ResponseEntity.ok(page);
         }
 
