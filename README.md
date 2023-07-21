@@ -4,11 +4,8 @@
 | -------------  | --- |
 | :sparkles: Nome        | **API - Extratos Bancários**
 | :label: Tecnologias | Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD
-
-<p align="center">
-<!-- Inserir imagem com a #vitrinedev ao final do link -->
-<img src="https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev" alt="alt text">
-</p>
+  
+![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev)
 
 ## Descrição 
 
