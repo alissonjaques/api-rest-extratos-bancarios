@@ -1,5 +1,7 @@
 # API - Extratos Bancários
 
+<p align="center">
+  
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **API - Extratos Bancários**
@@ -8,6 +10,7 @@
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev)
 
+</p>
 ## Descrição 
 
 - Este teste consiste em construir uma camada de serviço, para uma operação muito realizada em bancos, para emissão de extrato bancário.
