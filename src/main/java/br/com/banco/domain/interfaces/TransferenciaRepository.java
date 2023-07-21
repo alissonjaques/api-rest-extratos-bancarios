@@ -6,11 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface TransferenciaRepository extends JpaRepository<Transferencia, Long> {
+    @Query(value = "SELECT SUM(valor) AS valor FROM transferencias " +
+            "WHERE date(data_transferencia) BETWEEN :dataInicio AND :dataFim",
+            nativeQuery = true)
+    String somaDoValorPorPeriodo(Date dataInicio, Date dataFim);
+
     @Query("""
              select t from Transferencia t
              where t.idTransferencia = :idTransferencia

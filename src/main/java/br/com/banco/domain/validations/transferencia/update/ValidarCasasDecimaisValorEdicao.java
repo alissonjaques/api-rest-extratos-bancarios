@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component()
 public class ValidarCasasDecimaisValorEdicao implements IValidacaoEditarTransferencia {
     public void validar(UpdateTransferenciaDTO updateTransferenciaDTO){
-        System.out.println("Aqui");
         if(!possuiDuasCasasDecimais(updateTransferenciaDTO.valor())){
             throw new ValidacaoException("Não foi possível editar a transferência no banco de dados.<br>Motivo: " +
                     "o valor da transferência deve possuir, no máximo, duas casas decimais.",400);
@@ -16,12 +15,10 @@ public class ValidarCasasDecimaisValorEdicao implements IValidacaoEditarTransfer
 
     public boolean possuiDuasCasasDecimais(double valor) {
         String valorString = String.valueOf(valor);
-        System.out.println(valorString);
         String[] partes = valorString.split("\\.");
 
         if (partes.length == 2) {
             String casasDecimais = partes[1];
-            System.out.println(casasDecimais);
             return casasDecimais.length() <= 2;
         }
         return true;

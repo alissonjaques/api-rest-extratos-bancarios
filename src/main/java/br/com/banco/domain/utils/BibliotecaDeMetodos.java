@@ -1,24 +1,16 @@
 package br.com.banco.domain.utils;
 
-import br.com.banco.application.DTOs.transferencia.GetTransferenciaDTO;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 @Component
 public class BibliotecaDeMetodos {
     /**
-     * Este método calcula o saldo total das transferências passadas como argumento.
-     * @param transferencias a lista de transferencias
-     * @return o saldo total (soma dos valores das transferencias)
-     * */
-    public static double getSaldoPeriodo(List<GetTransferenciaDTO> transferencias){
-        double saldo = 0;
-        for (GetTransferenciaDTO transferencia : transferencias) {
-            saldo += transferencia.valor();
-        }
-
-        return saldo;
+     * @return um número flutuante aletório entre 0 e 100
+     */
+    public static double getAleatorio() {
+        Random random = new Random();
+        return random.nextDouble() * 100;
     }
 }
