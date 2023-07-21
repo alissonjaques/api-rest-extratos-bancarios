@@ -22,7 +22,7 @@ public class SpingDocConfigurations {
                                         .bearerFormat("JWT")))
                 .info(new Info()
                         .title("API Extratos Bancários")
-                        .description("A API consiste representa uma camada de serviço, para uma operação muito realizada" +
+                        .description("A API representa uma camada de serviço para uma operação muito realizada" +
                                 " em bancos: emissão de extrato bancário.")
                         .contact(new Contact()
                                 .name("Time Backend")
