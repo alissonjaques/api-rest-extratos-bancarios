@@ -25,7 +25,14 @@ public class TratadorDeErros {
 
     @ExceptionHandler(ValidacaoException.class)
     public ResponseEntity tratarErroRegraDeNegocio(ValidacaoException ex) {
-        return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(), ex.getStatus()));
+        switch (ex.getStatus()){
+            case 403:
+                return ResponseEntity.status(403).body(new ExceptionDTO(ex.getMessage(), ex.getStatus()));
+            case 500:
+                return ResponseEntity.internalServerError().body(new ExceptionDTO(ex.getMessage(), ex.getStatus()));
+            default:
+                return ResponseEntity.badRequest().body(new ExceptionDTO(ex.getMessage(), ex.getStatus()));
+        }
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
