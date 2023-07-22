@@ -1,12 +1,25 @@
 # API - Extratos Bancários
-
-| :placard: Vitrine.Dev |     |
-| -------------  | --- |
-| :sparkles: Nome        | **API - Extratos Bancários**
-| :label: Tecnologias | Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD
-
-<!-- Inserir imagem com a #vitrinedev ao final do link -->
-![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev)
+  
+<p align="center">
+  <table>
+    <tr>
+      <td align="center">:placard: Vitrine.Dev</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td align="center">:sparkles: Nome</td>
+      <td align="center">**API - Extratos Bancários**</td>
+    </tr>
+    <tr>
+      <td align="center">:label: Tecnologias</td>
+      <td align="center">Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD</td>
+    </tr>
+  </table>
+</p>
+  
+<p align="center">
+  <img src="https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev" alt="ícone de extrato bancario" style="width: 25%;">
+</p>
 
 ## Descrição 
 
@@ -29,6 +42,12 @@
 
 - Possuir a JDK 11 ou superior
 - Uma IDE ou editor de sua preferência
+
+## Documentação
+
+- Uma vez que o projeto esteja rodando é possível acessar toda a documentação da API nesse link: http://localhost:8080/swagger-ui.html
+  
+![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/documentacao.png#vitrinedev)
 
 ## Requisitos do Projeto
 
