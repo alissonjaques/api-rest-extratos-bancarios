@@ -6,7 +6,7 @@
 | :label: Tecnologias | Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD
   
 <p align="center">
-  <img src="https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev" alt="ícone de extrato bancario" style="width: 50%;">
+  <img src="https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev" alt="ícone de extrato bancario" style="width: 75%;">
 </p>
 
 ## Descrição 
