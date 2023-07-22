@@ -5,7 +5,7 @@
 | :sparkles: Nome        | **API - Extratos Bancários**
 | :label: Tecnologias | Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD
   
-![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev)
+![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png)
 
 ## Descrição 
 
@@ -28,6 +28,12 @@
 
 - Possuir a JDK 11 ou superior
 - Uma IDE ou editor de sua preferência
+
+## Documentação
+
+- Uma vez que o projeto esteja rodando é possível acessar toda a documentação da API nesse link: http://localhost:8080/swagger-ui.html
+  
+![alt text](https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/documentacao.png#vitrinedev)
 
 ## Requisitos do Projeto
 
