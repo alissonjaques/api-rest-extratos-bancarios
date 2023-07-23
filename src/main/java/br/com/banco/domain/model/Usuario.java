@@ -1,5 +1,7 @@
 package br.com.banco.domain.model;
 
+import br.com.banco.application.DTOs.usuario.CreateUsuarioDTO;
+import br.com.banco.application.DTOs.usuario.UpdateUsuarioDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -8,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,6 +28,11 @@ public class Usuario implements UserDetails {
     private Long idUsuario;
     private String login;
     private String senha;
+
+    public Usuario(CreateUsuarioDTO createUsuarioDTO) {
+        this.login = createUsuarioDTO.login();
+        this.senha  = new BCryptPasswordEncoder().encode(createUsuarioDTO.senha());
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,5 +67,10 @@ public class Usuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void atualizarInformacoes(UpdateUsuarioDTO updateUsuarioDTO) {
+        this.login = updateUsuarioDTO.login();
+        this.senha  = new BCryptPasswordEncoder().encode(updateUsuarioDTO.senha());
     }
 }

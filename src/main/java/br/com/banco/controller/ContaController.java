@@ -56,7 +56,6 @@ public class ContaController {
     @DeleteMapping("/{idConta}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long idConta){
-        var conta = contaRepository.getReferenceById(idConta);
         contaService.excluir(idConta);
         return ResponseEntity.noContent().build();
     }
