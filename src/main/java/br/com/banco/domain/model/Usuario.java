@@ -1,5 +1,7 @@
 package br.com.banco.domain.model;
 
+import br.com.banco.application.DTOs.usuario.CreateUsuarioDTO;
+import br.com.banco.application.DTOs.usuario.UpdateUsuarioDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,6 +28,10 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
 
+    public Usuario(CreateUsuarioDTO createUsuarioDTO) {
+        this.login = createUsuarioDTO.login();
+        this.senha = createUsuarioDTO.senha();
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
@@ -59,5 +65,10 @@ public class Usuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void atualizarInformacoes(UpdateUsuarioDTO updateUsuarioDTO) {
+        this.login = updateUsuarioDTO.login();
+        this.senha = updateUsuarioDTO.senha();
     }
 }

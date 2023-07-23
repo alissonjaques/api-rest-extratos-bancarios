@@ -1,6 +1,5 @@
 package br.com.banco.application.DTOs.transferencia;
 
-import br.com.banco.domain.enums.Tipo;
 import br.com.banco.domain.model.Transferencia;
 
 import java.time.LocalDateTime;
