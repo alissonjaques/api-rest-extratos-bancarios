@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
@@ -30,8 +31,9 @@ public class Usuario implements UserDetails {
 
     public Usuario(CreateUsuarioDTO createUsuarioDTO) {
         this.login = createUsuarioDTO.login();
-        this.senha = createUsuarioDTO.senha();
+        this.senha  = new BCryptPasswordEncoder().encode(createUsuarioDTO.senha());
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
@@ -69,6 +71,6 @@ public class Usuario implements UserDetails {
 
     public void atualizarInformacoes(UpdateUsuarioDTO updateUsuarioDTO) {
         this.login = updateUsuarioDTO.login();
-        this.senha = updateUsuarioDTO.senha();
+        this.senha  = new BCryptPasswordEncoder().encode(updateUsuarioDTO.senha());
     }
 }

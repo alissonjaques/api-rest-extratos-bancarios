@@ -13,5 +13,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             where u.idUsuario = :idUsuario
            """)
     Usuario findByIdUsuario(Long idUsuario);
+
+    @Query("""
+            select u from Usuario u
+            where u.login = :login
+           """)
+    Usuario findByLoginUsuario(String login);
 }
 

@@ -3,6 +3,7 @@ package br.com.banco.domain.validations.usuario.update;
 import br.com.banco.application.DTOs.usuario.UpdateUsuarioDTO;
 import br.com.banco.domain.exceptions.ValidacaoException;
 import org.springframework.stereotype.Component;
+
 @Component()
 public class ValidarCamposObrigatoriosUsuarioEdicao implements IValidacaoEditarUsuario {
     public void validar(UpdateUsuarioDTO updateUsuarioDTO){
