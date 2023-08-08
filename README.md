@@ -1,21 +1,10 @@
 # API - Extratos Bancários
-  
-<p align="center">
-  <table>
-    <tr>
-      <td align="center">:placard: Vitrine.Dev</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td align="center">:sparkles: Nome</td>
-      <td align="center">**API - Extratos Bancários**</td>
-    </tr>
-    <tr>
-      <td align="center">:label: Tecnologias</td>
-      <td align="center">Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD</td>
-    </tr>
-  </table>
-</p>
+
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **API - Extratos Bancários**
+| :label: Tecnologias | Java, Framework Spring, JPA, Hibernate, Rest, SQL, MySQL, DDD
+
   
 <p align="center">
   <img src="https://github.com/alissonjaques/imagens-aplicacoes/blob/main/api-extratos-bancarios/home.png#vitrinedev" alt="ícone de extrato bancario" style="width: 25%;">
