@@ -29,7 +29,7 @@
 
 ## Requisitos de sistema
 
-- Possuir a JDK 11 ou superior
+- Possuir a JDK 17 ou superior
 - Uma IDE ou editor de sua preferência
 
 ## Documentação
